@@ -1,0 +1,22 @@
+<div class="theme-switcher">
+  <select id="theme-select" onchange="switchTheme(this.value)" aria-label="Theme">
+    <option value="dark">Dark</option>
+    <option value="classic">Light</option>
+  </select>
+</div>
+
+<script>
+function switchTheme(theme) {
+  localStorage.setItem('theme', theme);
+  var link = document.getElementById('theme-css');
+  if (link) {
+    link.href = '/assets/css/' + theme + '.css';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('theme') || 'dark';
+  var select = document.getElementById('theme-select');
+  if (select) select.value = saved;
+});
+</script>
