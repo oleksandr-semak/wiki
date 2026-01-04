@@ -1,0 +1,34 @@
+title: DevOps Wiki
+description: Notes on AWS certifications, homelab experiments, and DevOps cases
+author: Oleksandr Semak
+baseurl: ""
+url: ""
+
+theme: minima
+
+minima:
+  skin: dark
+  date_format: "%Y-%m-%d"
+
+header_pages:
+  - index.md
+  - about.md
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Collections for wiki pages
+collections:
+  wiki:
+    output: true
+    permalink: /:collection/:path/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "wiki"
+    values:
+      layout: "wiki"
+      sidebar: true

@@ -1,0 +1,11 @@
+sidebar:
+  - title: Home
+    url: /
+  - title: AWS
+    url: /wiki/aws/
+    children:
+      - title: Exam
+        url: /wiki/aws/exam/
+        children:
+          - title: Solutions Architect Professional
+            url: /wiki/aws/exam/solutions-architect-professional/

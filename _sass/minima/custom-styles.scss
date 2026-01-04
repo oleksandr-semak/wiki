@@ -1,0 +1,110 @@
+.wiki-sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  width: 220px;
+  height: calc(100vh - 60px);
+  padding: 1rem;
+  overflow-y: auto;
+  background: inherit;
+  z-index: 100;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.wiki-container {
+  display: block;
+}
+
+.wiki-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+    display: none;
+  }
+
+  ul.expanded {
+    display: block;
+  }
+
+  li {
+    margin: 0.25rem 0;
+  }
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    &.active {
+      font-weight: bold;
+      background-color: rgba(128, 128, 128, 0.15);
+    }
+  }
+}
+
+.sidebar-toggle {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: "▶";
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  &.open::before {
+    transform: rotate(90deg);
+  }
+}
+
+.sidebar-children {
+  margin-left: 1rem;
+}
+
+.sidebar-grandchildren {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .wiki-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #444;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .wiki-content {
+    margin: 0 auto;
+    padding: 1rem;
+  }
+}
