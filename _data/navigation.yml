@@ -12,6 +12,11 @@ sidebar:
             children:
               - title: EKS IPv4 Exhaustion & CG-NAT
                 url: /wiki/aws/topics/network/cg-nat/
+          - title: Security
+            url: /wiki/aws/topics/security/
+            children:
+              - title: IAM Permissions Boundaries
+                url: /wiki/aws/topics/security/iam-permissions-boundaries/
       - title: Exam
         url: /wiki/aws/exam/
         children:
