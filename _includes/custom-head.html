@@ -1,10 +1,11 @@
 <link id="theme-css" rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}">
 <script>
   (function() {
+    var baseUrl = '{{ site.baseurl }}';
     var theme = localStorage.getItem('theme') || 'dark';
     var link = document.getElementById('theme-css');
     if (link && theme !== 'dark') {
-      link.href = '/assets/css/' + theme + '.css';
+      link.href = baseUrl + '/assets/css/' + theme + '.css';
     }
   })();
 </script>

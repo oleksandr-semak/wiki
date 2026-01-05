@@ -6,11 +6,12 @@
 </div>
 
 <script>
+var baseUrl = '{{ site.baseurl }}';
 function switchTheme(theme) {
   localStorage.setItem('theme', theme);
   var link = document.getElementById('theme-css');
   if (link) {
-    link.href = '/assets/css/' + theme + '.css';
+    link.href = baseUrl + '/assets/css/' + theme + '.css';
   }
 }
 

@@ -1,8 +1,8 @@
 title: DevOps Wiki
 description: ""
 author: Oleksandr Semak
-baseurl: ""
-url: ""
+baseurl: "/wiki"
+url: "https://oleksandr-semak.github.io"
 
 theme: minima
 # remote_theme: jekyll/minima  # uncomment for GitHub Pages dark skin
