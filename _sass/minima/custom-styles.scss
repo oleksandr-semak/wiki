@@ -105,6 +105,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     transition: background-color 0.2s;
+    color: inherit;
 
     &:hover {
       background-color: rgba(128, 128, 128, 0.1);
@@ -117,16 +118,22 @@
   }
 }
 
+.sidebar-parent {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .sidebar-toggle {
   cursor: pointer;
   user-select: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  padding: 0.25rem;
 
   &::before {
     content: "▶";
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     transition: transform 0.2s;
   }
 
@@ -141,6 +148,131 @@
 
 .sidebar-grandchildren {
   margin-left: 1rem;
+}
+
+.sidebar-greatgrandchildren {
+  margin-left: 1rem;
+}
+
+.article-link {
+  background: rgba(100, 150, 255, 0.1);
+  border-left: 4px solid #79b8ff;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.warning {
+  background: rgba(255, 180, 50, 0.15);
+  border-left: 4px solid #f0ad4e;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.post-tags {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+
+  .tag {
+    display: inline-block;
+    background: rgba(128, 128, 128, 0.2);
+    color: inherit;
+    padding: 0.2rem 0.6rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: rgba(128, 128, 128, 0.4);
+    }
+  }
+}
+
+.tags-page {
+  .tags-filter {
+    margin-bottom: 1rem;
+  }
+
+  .tags-cloud {
+    margin-bottom: 1rem;
+
+    .tag-btn {
+      display: inline-block;
+      background: rgba(128, 128, 128, 0.2);
+      color: inherit;
+      padding: 0.3rem 0.8rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: rgba(128, 128, 128, 0.4);
+      }
+
+      &.active {
+        background: rgba(100, 150, 255, 0.4);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .clear-btn {
+    background: rgba(255, 100, 100, 0.2);
+    color: inherit;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+    &:hover {
+      background: rgba(255, 100, 100, 0.4);
+    }
+  }
+
+  .articles-list {
+    .article-item {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+
+      a {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .article-tags {
+    .tag-small {
+      display: inline-block;
+      background: rgba(128, 128, 128, 0.15);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      margin-left: 0.25rem;
+    }
+  }
+
+  .no-results {
+    color: rgba(128, 128, 128, 0.7);
+    font-style: italic;
+    padding: 1rem 0;
+  }
 }
 
 @media (max-width: 768px) {

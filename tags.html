@@ -1,0 +1,102 @@
+---
+layout: wiki
+title: Tags
+permalink: /tags/
+---
+
+<div class="tags-page">
+  {% assign all_tags = site.wiki | map: "tags" | compact | flatten | uniq | sort %}
+
+  <div class="tags-filter">
+    <div class="tags-cloud">
+      {% for tag in all_tags %}
+        <button class="tag-btn" data-tag="{{ tag }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+    <button class="clear-btn" style="display: none;">Clear filters</button>
+  </div>
+
+  <hr>
+
+  <div class="articles-list">
+    {% for page in site.wiki %}
+      {% if page.tags %}
+      <div class="article-item" data-tags="{{ page.tags | join: ',' }}">
+        <a href="{{ page.url | relative_url }}">{{ page.title }}</a>
+        <span class="article-tags">
+          {% for tag in page.tags %}
+          <span class="tag-small">{{ tag }}</span>
+          {% endfor %}
+        </span>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="no-results" style="display: none;">
+    No articles found with selected tags.
+  </div>
+</div>
+
+<script>
+(function() {
+  const tagBtns = document.querySelectorAll('.tag-btn');
+  const clearBtn = document.querySelector('.clear-btn');
+  const articles = document.querySelectorAll('.article-item');
+  const noResults = document.querySelector('.no-results');
+  let selectedTags = new Set();
+
+  // Check URL hash for initial tag
+  function checkHash() {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      selectedTags.add(hash);
+      updateUI();
+    }
+  }
+
+  function updateUI() {
+    // Update button states
+    tagBtns.forEach(btn => {
+      btn.classList.toggle('active', selectedTags.has(btn.dataset.tag));
+    });
+
+    // Show/hide clear button
+    clearBtn.style.display = selectedTags.size > 0 ? 'inline-block' : 'none';
+
+    // Filter articles
+    let visibleCount = 0;
+    articles.forEach(article => {
+      const articleTags = article.dataset.tags.split(',');
+      const matches = selectedTags.size === 0 ||
+        [...selectedTags].some(tag => articleTags.includes(tag));
+
+      article.style.display = matches ? 'flex' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    // Show no results message
+    noResults.style.display = (selectedTags.size > 0 && visibleCount === 0) ? 'block' : 'none';
+  }
+
+  tagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+      if (selectedTags.has(tag)) {
+        selectedTags.delete(tag);
+      } else {
+        selectedTags.add(tag);
+      }
+      updateUI();
+    });
+  });
+
+  clearBtn.addEventListener('click', () => {
+    selectedTags.clear();
+    window.location.hash = '';
+    updateUI();
+  });
+
+  checkHash();
+})();
+</script>

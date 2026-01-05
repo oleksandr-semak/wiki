@@ -4,8 +4,9 @@ title: AWS
 permalink: /wiki/aws/
 ---
 
-Amazon Web Services (AWS) related content including certification exam preparation and practical guides.
+Amazon Web Services (AWS) related content.
 
 ## Sections
 
-- [Exam](/wiki/aws/exam/) - AWS certification exam preparation materials
+- [Topics](/wiki/aws/topics/) - General AWS knowledge base
+- [Exam](/wiki/aws/exam/) - AWS certification exam preparation

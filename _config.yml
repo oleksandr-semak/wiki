@@ -1,5 +1,5 @@
 title: DevOps Wiki
-description: Notes on AWS certifications, homelab experiments, and DevOps cases
+description: ""
 author: Oleksandr Semak
 baseurl: ""
 url: ""
@@ -13,6 +13,7 @@ minima:
   nav_pages:
     - index.md
     - about.md
+    - tags.html
 
 # Build settings
 markdown: kramdown

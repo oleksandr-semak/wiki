@@ -4,8 +4,19 @@ sidebar:
   - title: AWS
     url: /wiki/aws/
     children:
+      - title: Topics
+        url: /wiki/aws/topics/
+        children:
+          - title: Network
+            url: /wiki/aws/topics/network/
+            children:
+              - title: EKS IPv4 Exhaustion & CG-NAT
+                url: /wiki/aws/topics/network/cg-nat/
       - title: Exam
         url: /wiki/aws/exam/
         children:
           - title: Solutions Architect Professional
             url: /wiki/aws/exam/solutions-architect-professional/
+            children:
+              - title: Topics
+                url: /wiki/aws/exam/solutions-architect-professional/topics/

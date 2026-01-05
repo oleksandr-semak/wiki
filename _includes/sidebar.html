@@ -10,13 +10,21 @@
         {% if child.children %}
           {% for grandchild in child.children %}
             {% if page.url == grandchild.url %}{% assign is_active = true %}{% endif %}
+            {% if grandchild.children %}
+              {% for greatgrandchild in grandchild.children %}
+                {% if page.url == greatgrandchild.url %}{% assign is_active = true %}{% endif %}
+              {% endfor %}
+            {% endif %}
           {% endfor %}
         {% endif %}
       {% endfor %}
     {% endif %}
     <li class="sidebar-item">
       {% if item.children %}
-      <span class="sidebar-toggle {% if is_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('expanded');">{{ item.title }}</span>
+      <div class="sidebar-parent">
+        <span class="sidebar-toggle {% if is_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.parentElement.nextElementSibling.classList.toggle('expanded');"></span>
+        <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+      </div>
       <ul class="sidebar-children {% if is_active %}expanded{% endif %}">
         {% for child in item.children %}
         {% assign child_active = false %}
@@ -24,15 +32,44 @@
         {% if child.children %}
           {% for grandchild in child.children %}
             {% if page.url == grandchild.url %}{% assign child_active = true %}{% endif %}
+            {% if grandchild.children %}
+              {% for greatgrandchild in grandchild.children %}
+                {% if page.url == greatgrandchild.url %}{% assign child_active = true %}{% endif %}
+              {% endfor %}
+            {% endif %}
           {% endfor %}
         {% endif %}
         <li class="sidebar-child">
           {% if child.children %}
-          <span class="sidebar-toggle {% if child_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('expanded');">{{ child.title }}</span>
+          <div class="sidebar-parent">
+            <span class="sidebar-toggle {% if child_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.parentElement.nextElementSibling.classList.toggle('expanded');"></span>
+            <a href="{{ child.url | relative_url }}" {% if page.url == child.url %}class="active"{% endif %}>{{ child.title }}</a>
+          </div>
           <ul class="sidebar-grandchildren {% if child_active %}expanded{% endif %}">
             {% for grandchild in child.children %}
+            {% assign grandchild_active = false %}
+            {% if page.url == grandchild.url %}{% assign grandchild_active = true %}{% endif %}
+            {% if grandchild.children %}
+              {% for greatgrandchild in grandchild.children %}
+                {% if page.url == greatgrandchild.url %}{% assign grandchild_active = true %}{% endif %}
+              {% endfor %}
+            {% endif %}
             <li class="sidebar-grandchild">
+              {% if grandchild.children %}
+              <div class="sidebar-parent">
+                <span class="sidebar-toggle {% if grandchild_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.parentElement.nextElementSibling.classList.toggle('expanded');"></span>
+                <a href="{{ grandchild.url | relative_url }}" {% if page.url == grandchild.url %}class="active"{% endif %}>{{ grandchild.title }}</a>
+              </div>
+              <ul class="sidebar-greatgrandchildren {% if grandchild_active %}expanded{% endif %}">
+                {% for greatgrandchild in grandchild.children %}
+                <li class="sidebar-greatgrandchild">
+                  <a href="{{ greatgrandchild.url | relative_url }}" {% if page.url == greatgrandchild.url %}class="active"{% endif %}>{{ greatgrandchild.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
               <a href="{{ grandchild.url | relative_url }}" {% if page.url == grandchild.url %}class="active"{% endif %}>{{ grandchild.title }}</a>
+              {% endif %}
             </li>
             {% endfor %}
           </ul>
