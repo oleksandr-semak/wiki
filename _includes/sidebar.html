@@ -13,6 +13,11 @@
             {% if grandchild.children %}
               {% for greatgrandchild in grandchild.children %}
                 {% if page.url == greatgrandchild.url %}{% assign is_active = true %}{% endif %}
+                {% if greatgrandchild.children %}
+                  {% for level5 in greatgrandchild.children %}
+                    {% if page.url == level5.url %}{% assign is_active = true %}{% endif %}
+                  {% endfor %}
+                {% endif %}
               {% endfor %}
             {% endif %}
           {% endfor %}
@@ -35,6 +40,11 @@
             {% if grandchild.children %}
               {% for greatgrandchild in grandchild.children %}
                 {% if page.url == greatgrandchild.url %}{% assign child_active = true %}{% endif %}
+                {% if greatgrandchild.children %}
+                  {% for level5 in greatgrandchild.children %}
+                    {% if page.url == level5.url %}{% assign child_active = true %}{% endif %}
+                  {% endfor %}
+                {% endif %}
               {% endfor %}
             {% endif %}
           {% endfor %}
@@ -52,6 +62,11 @@
             {% if grandchild.children %}
               {% for greatgrandchild in grandchild.children %}
                 {% if page.url == greatgrandchild.url %}{% assign grandchild_active = true %}{% endif %}
+                {% if greatgrandchild.children %}
+                  {% for level5 in greatgrandchild.children %}
+                    {% if page.url == level5.url %}{% assign grandchild_active = true %}{% endif %}
+                  {% endfor %}
+                {% endif %}
               {% endfor %}
             {% endif %}
             <li class="sidebar-grandchild">
@@ -62,8 +77,29 @@
               </div>
               <ul class="sidebar-greatgrandchildren {% if grandchild_active %}expanded{% endif %}">
                 {% for greatgrandchild in grandchild.children %}
+                {% assign greatgrandchild_active = false %}
+                {% if page.url == greatgrandchild.url %}{% assign greatgrandchild_active = true %}{% endif %}
+                {% if greatgrandchild.children %}
+                  {% for level5 in greatgrandchild.children %}
+                    {% if page.url == level5.url %}{% assign greatgrandchild_active = true %}{% endif %}
+                  {% endfor %}
+                {% endif %}
                 <li class="sidebar-greatgrandchild">
+                  {% if greatgrandchild.children %}
+                  <div class="sidebar-parent">
+                    <span class="sidebar-toggle {% if greatgrandchild_active %}open{% endif %}" onclick="this.classList.toggle('open'); this.parentElement.nextElementSibling.classList.toggle('expanded');"></span>
+                    <a href="{{ greatgrandchild.url | relative_url }}" {% if page.url == greatgrandchild.url %}class="active"{% endif %}>{{ greatgrandchild.title }}</a>
+                  </div>
+                  <ul class="sidebar-level5 {% if greatgrandchild_active %}expanded{% endif %}">
+                    {% for level5 in greatgrandchild.children %}
+                    <li class="sidebar-level5-item">
+                      <a href="{{ level5.url | relative_url }}" {% if page.url == level5.url %}class="active"{% endif %}>{{ level5.title }}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% else %}
                   <a href="{{ greatgrandchild.url | relative_url }}" {% if page.url == greatgrandchild.url %}class="active"{% endif %}>{{ greatgrandchild.title }}</a>
+                  {% endif %}
                 </li>
                 {% endfor %}
               </ul>

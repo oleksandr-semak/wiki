@@ -154,6 +154,17 @@
   margin-left: 1rem;
 }
 
+.sidebar-level5 {
+  margin-left: 1rem;
+  list-style: none;
+  padding: 0;
+  display: none;
+
+  &.expanded {
+    display: block;
+  }
+}
+
 .article-link {
   background: rgba(100, 150, 255, 0.1);
   border-left: 4px solid #79b8ff;

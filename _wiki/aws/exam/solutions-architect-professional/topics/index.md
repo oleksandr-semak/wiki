@@ -8,9 +8,11 @@ permalink: /wiki/aws/exam/solutions-architect-professional/topics/
 
 Key topics for AWS Certified Solutions Architect – Professional exam preparation.
 
-## Domain Topics
+## Sections
 
-*Add your exam-specific topics here*
+- [Security](/wiki/aws/exam/solutions-architect-professional/topics/security/) - IAM, policies, and access control
+
+## Domain Topics
 
 ### Design for Organizational Complexity
 - Multi-account strategies
