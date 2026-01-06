@@ -12,6 +12,8 @@ sidebar:
             children:
               - title: EKS IPv4 Exhaustion & CG-NAT
                 url: /wiki/aws/topics/network/cg-nat/
+              - title: VPC Sharing with AWS RAM
+                url: /wiki/aws/topics/network/vpc-sharing-ram/
           - title: Security
             url: /wiki/aws/topics/security/
             children:
