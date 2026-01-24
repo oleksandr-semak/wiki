@@ -12,6 +12,7 @@ AWS networking concepts, services, and solutions for common challenges.
 
 - [IPv4 Address Exhaustion & CG-NAT](/wiki/aws/topics/network/cg-nat/) - Using Private NAT Gateway to solve IP exhaustion in EKS
 - [VPC Sharing with AWS RAM](/wiki/aws/topics/network/vpc-sharing-ram/) - Eliminate connectivity complexity with subnet sharing
+- [Transit Gateway Centralized NAT](/wiki/aws/topics/network/transit-gateway-central-nat/) - Single internet exit point from multiple VPCs
 
 ## Topics
 
