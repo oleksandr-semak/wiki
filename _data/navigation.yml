@@ -14,6 +14,8 @@ sidebar:
                 url: /wiki/aws/topics/network/cg-nat/
               - title: VPC Sharing with AWS RAM
                 url: /wiki/aws/topics/network/vpc-sharing-ram/
+              - title: Transit Gateway Centralized NAT
+                url: /wiki/aws/topics/network/transit-gateway-central-nat/
           - title: Security
             url: /wiki/aws/topics/security/
             children:
